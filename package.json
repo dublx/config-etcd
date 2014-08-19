@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/dublx/config-etcd/issues"
   },
-  "homepage": "https://github.com/dublx/config-etcd"
+  "homepage": "https://github.com/dublx/config-etcd",
+  "dependencies": {
+    "nodejs-etcd": "^0.1.1"
+  }
 }

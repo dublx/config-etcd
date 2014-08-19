@@ -9,6 +9,18 @@
         "dir": true,
         "nodes": [
           {
+            "key": "/service-x/host-3",
+            "value": "host-2:3000",
+            "modifiedIndex": 8,
+            "createdIndex": 8
+          },
+          {
+            "key": "/service-x/host-4",
+            "value": "host-4:3000",
+            "modifiedIndex": 48,
+            "createdIndex": 48
+          },
+          {
             "key": "/service-x/host-1",
             "value": "host-1:3000",
             "modifiedIndex": 6,
@@ -19,12 +31,6 @@
             "value": "host-1:4000",
             "modifiedIndex": 7,
             "createdIndex": 7
-          },
-          {
-            "key": "/service-x/host-3",
-            "value": "host-2:3000",
-            "modifiedIndex": 8,
-            "createdIndex": 8
           }
         ],
         "modifiedIndex": 6,
@@ -36,9 +42,9 @@
         "nodes": [
           {
             "key": "/database/mongodb",
-            "value": "host-x:28017",
-            "modifiedIndex": 29,
-            "createdIndex": 29
+            "value": "host-y:28017",
+            "modifiedIndex": 49,
+            "createdIndex": 49
           }
         ],
         "modifiedIndex": 9,

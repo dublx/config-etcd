@@ -5,12 +5,6 @@
     "dir": true,
     "nodes": [
       {
-        "key": "/hello",
-        "value": "world",
-        "modifiedIndex": 5,
-        "createdIndex": 5
-      },
-      {
         "key": "/service-x",
         "dir": true,
         "nodes": [
@@ -35,6 +29,20 @@
         ],
         "modifiedIndex": 6,
         "createdIndex": 6
+      },
+      {
+        "key": "/database",
+        "dir": true,
+        "nodes": [
+          {
+            "key": "/database/mongodb",
+            "value": "host-x:28017",
+            "modifiedIndex": 29,
+            "createdIndex": 29
+          }
+        ],
+        "modifiedIndex": 9,
+        "createdIndex": 9
       }
     ]
   }

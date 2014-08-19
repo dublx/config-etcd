@@ -1,11 +1,15 @@
 {
     "keys": [
         {
-            "name": "dep1",
-            "key": "/hello"
+            "name": "Database",
+            "key": "/database/mongodb"
         },
         {
-            "name": "depx",
+            "name": "Cache",
+            "key": "/cache/redis"
+        },
+        {
+            "name": "ServiceX",
             "key": "/service-x"
         }
     ]

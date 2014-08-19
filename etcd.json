@@ -1,5 +1,0 @@
-{ "keys":
-    [
-    {"name":"dep1" , "key":"/hello"},
-    {"name":"dep2" , "key":"/world"}
-    ]}

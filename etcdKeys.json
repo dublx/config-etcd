@@ -1,0 +1,12 @@
+{
+    "keys": [
+        {
+            "name": "dep1",
+            "key": "/hello"
+        },
+        {
+            "name": "depx",
+            "key": "/service-x"
+        }
+    ]
+}

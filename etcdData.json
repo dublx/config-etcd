@@ -1,0 +1,41 @@
+{
+  "action": "get",
+  "node": {
+    "key": "/",
+    "dir": true,
+    "nodes": [
+      {
+        "key": "/hello",
+        "value": "world",
+        "modifiedIndex": 5,
+        "createdIndex": 5
+      },
+      {
+        "key": "/service-x",
+        "dir": true,
+        "nodes": [
+          {
+            "key": "/service-x/host-1",
+            "value": "host-1:3000",
+            "modifiedIndex": 6,
+            "createdIndex": 6
+          },
+          {
+            "key": "/service-x/host-2",
+            "value": "host-1:4000",
+            "modifiedIndex": 7,
+            "createdIndex": 7
+          },
+          {
+            "key": "/service-x/host-3",
+            "value": "host-2:3000",
+            "modifiedIndex": 8,
+            "createdIndex": 8
+          }
+        ],
+        "modifiedIndex": 6,
+        "createdIndex": 6
+      }
+    ]
+  }
+}

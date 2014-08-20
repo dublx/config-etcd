@@ -5,21 +5,63 @@
     "dir": true,
     "nodes": [
       {
-        "key": "/service-x",
+        "key": "/config",
         "dir": true,
         "nodes": [
           {
-            "key": "/service-x/host-3",
-            "value": "host-2:3000",
-            "modifiedIndex": 8,
-            "createdIndex": 8
-          },
-          {
-            "key": "/service-x/host-4",
-            "value": "host-4:3000",
-            "modifiedIndex": 48,
-            "createdIndex": 48
-          },
+            "key": "/config/service-a",
+            "dir": true,
+            "nodes": [
+              {
+                "key": "/config/service-a/dependencies",
+                "dir": true,
+                "nodes": [
+                  {
+                    "key": "/config/service-a/dependencies/database",
+                    "value": "/database/mongodb",
+                    "modifiedIndex": 50,
+                    "createdIndex": 50
+                  },
+                  {
+                    "key": "/config/service-a/dependencies/cache",
+                    "value": "/cache/redis",
+                    "modifiedIndex": 51,
+                    "createdIndex": 51
+                  },
+                  {
+                    "key": "/config/service-a/dependencies/servicex",
+                    "value": "/service-x",
+                    "modifiedIndex": 52,
+                    "createdIndex": 52
+                  }
+                ],
+                "modifiedIndex": 50,
+                "createdIndex": 50
+              },
+              {
+                "key": "/config/service-a/param1",
+                "value": "1",
+                "modifiedIndex": 53,
+                "createdIndex": 53
+              },
+              {
+                "key": "/config/service-a/param2",
+                "value": "2",
+                "modifiedIndex": 54,
+                "createdIndex": 54
+              }
+            ],
+            "modifiedIndex": 50,
+            "createdIndex": 50
+          }
+        ],
+        "modifiedIndex": 50,
+        "createdIndex": 50
+      },
+      {
+        "key": "/service-x",
+        "dir": true,
+        "nodes": [
           {
             "key": "/service-x/host-1",
             "value": "host-1:3000",
@@ -31,6 +73,18 @@
             "value": "host-1:4000",
             "modifiedIndex": 7,
             "createdIndex": 7
+          },
+          {
+            "key": "/service-x/host-3",
+            "value": "host-2:3000",
+            "modifiedIndex": 8,
+            "createdIndex": 8
+          },
+          {
+            "key": "/service-x/host-4",
+            "value": "host-4:3000",
+            "modifiedIndex": 48,
+            "createdIndex": 48
           }
         ],
         "modifiedIndex": 6,

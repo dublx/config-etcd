@@ -1,10 +1,26 @@
 {
-  "dep1": [
-    "world"
-  ],
-  "depx": [
-    "host-2:3000",
-    "host-1:4000",
-    "host-1:3000"
-  ]
+  "options": {
+    "param2": "2",
+    "param1": "1"
+  },
+  "dependencies": {
+    "servicex": [
+      "host-4:3000",
+      "host-2:3000",
+      "host-1:4000",
+      "host-1:3000"
+    ],
+    "database": [
+      "host-y:28017"
+    ],
+    "cache": [
+      {
+        "err": {
+          "code": 100,
+          "message": "Key not found",
+          "cause": "/cache"
+        }
+      }
+    ]
+  }
 }

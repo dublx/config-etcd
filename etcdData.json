@@ -5,58 +5,38 @@
     "dir": true,
     "nodes": [
       {
-        "key": "/config",
+        "key": "/servicea",
         "dir": true,
         "nodes": [
           {
-            "key": "/config/service-a",
-            "dir": true,
-            "nodes": [
-              {
-                "key": "/config/service-a/dependencies",
-                "dir": true,
-                "nodes": [
-                  {
-                    "key": "/config/service-a/dependencies/database",
-                    "value": "/database/mongodb",
-                    "modifiedIndex": 50,
-                    "createdIndex": 50
-                  },
-                  {
-                    "key": "/config/service-a/dependencies/cache",
-                    "value": "/cache/redis",
-                    "modifiedIndex": 51,
-                    "createdIndex": 51
-                  },
-                  {
-                    "key": "/config/service-a/dependencies/servicex",
-                    "value": "/service-x",
-                    "modifiedIndex": 52,
-                    "createdIndex": 52
-                  }
-                ],
-                "modifiedIndex": 50,
-                "createdIndex": 50
-              },
-              {
-                "key": "/config/service-a/param1",
-                "value": "1",
-                "modifiedIndex": 53,
-                "createdIndex": 53
-              },
-              {
-                "key": "/config/service-a/param2",
-                "value": "2",
-                "modifiedIndex": 54,
-                "createdIndex": 54
-              }
-            ],
-            "modifiedIndex": 50,
-            "createdIndex": 50
+            "key": "/servicea/param2",
+            "value": "value2",
+            "modifiedIndex": 12,
+            "createdIndex": 12
+          },
+          {
+            "key": "/servicea/param1",
+            "value": "value1",
+            "modifiedIndex": 13,
+            "createdIndex": 13
           }
         ],
-        "modifiedIndex": 50,
-        "createdIndex": 50
+        "modifiedIndex": 12,
+        "createdIndex": 12
+      },
+      {
+        "key": "/database",
+        "dir": true,
+        "nodes": [
+          {
+            "key": "/database/mongodb",
+            "value": "host-x:27017",
+            "modifiedIndex": 3,
+            "createdIndex": 3
+          }
+        ],
+        "modifiedIndex": 3,
+        "createdIndex": 3
       },
       {
         "key": "/service-x",
@@ -65,44 +45,70 @@
           {
             "key": "/service-x/host-1",
             "value": "host-1:3000",
-            "modifiedIndex": 6,
-            "createdIndex": 6
+            "modifiedIndex": 4,
+            "createdIndex": 4
           },
           {
             "key": "/service-x/host-2",
             "value": "host-1:4000",
-            "modifiedIndex": 7,
-            "createdIndex": 7
+            "modifiedIndex": 5,
+            "createdIndex": 5
           },
           {
             "key": "/service-x/host-3",
             "value": "host-2:3000",
-            "modifiedIndex": 8,
-            "createdIndex": 8
-          },
-          {
-            "key": "/service-x/host-4",
-            "value": "host-4:3000",
-            "modifiedIndex": 48,
-            "createdIndex": 48
+            "modifiedIndex": 6,
+            "createdIndex": 6
           }
         ],
-        "modifiedIndex": 6,
-        "createdIndex": 6
+        "modifiedIndex": 4,
+        "createdIndex": 4
       },
       {
-        "key": "/database",
+        "key": "/config",
         "dir": true,
         "nodes": [
           {
-            "key": "/database/mongodb",
-            "value": "host-y:28017",
-            "modifiedIndex": 49,
-            "createdIndex": 49
+            "key": "/config/service-a",
+            "dir": true,
+            "nodes": [
+              {
+                "key": "/config/service-a/database",
+                "value": "/database/mongodb",
+                "modifiedIndex": 7,
+                "createdIndex": 7
+              },
+              {
+                "key": "/config/service-a/cache",
+                "value": "/cache/redis",
+                "modifiedIndex": 8,
+                "createdIndex": 8
+              },
+              {
+                "key": "/config/service-a/servicex",
+                "value": "/service-x",
+                "modifiedIndex": 9,
+                "createdIndex": 9
+              },
+              {
+                "key": "/config/service-a/param1",
+                "value": "/servicea/param1",
+                "modifiedIndex": 10,
+                "createdIndex": 10
+              },
+              {
+                "key": "/config/service-a/param2",
+                "value": "/servicea/param2",
+                "modifiedIndex": 11,
+                "createdIndex": 11
+              }
+            ],
+            "modifiedIndex": 7,
+            "createdIndex": 7
           }
         ],
-        "modifiedIndex": 9,
-        "createdIndex": 9
+        "modifiedIndex": 7,
+        "createdIndex": 7
       }
     ]
   }

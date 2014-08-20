@@ -3,17 +3,13 @@ var each = require('each');
 var e = new etcd({
     url: 'http://127.0.0.1:4001'
 })
+
 var config = {}
-
-
 getConfig("/config/service-a")
 
 function getConfig(configKey) {
 
-    getBaseConfig(configKey, function(options){
-        config.options = options;
-    });
-    getDependencies(configKey + "/dependencies", function(dependencies){
+    getDependencies(configKey, function(dependencies){
         //iterate over all keys and print the config object.
         //the config object will have a object for each key and the object's value is an array of values
         each(dependencies.keys)
@@ -40,33 +36,6 @@ function getConfig(configKey) {
 };
 
 
-//get dependencies and their values from etcd
-function getBaseConfig(key, cb){
-    //console.log("getBaseConfig('%s')", key);
-    e.read({'key': key, 'recursive':true}, function (err, result, body) {
-        if (err) throw err;
-
-        body=JSON.parse(result.body);
-
-        //check for errors
-        if(body && body.errorCode > 0){
-            throw new err({ "err":{"code":body.errorCode, "message": body.message , "cause": body.cause}});
-        }
-        //read dir node values except for dependencies dir
-        var options = {};
-        if (body.node.dir){
-            for (var i=body.node.nodes.length; i--; ) {
-                if (!body.node.nodes[i].dir && body.node.key.indexOf('/dependencies') < 0) {
-                    var optName = body.node.nodes[i].key;
-                    optName = optName.substring(optName.lastIndexOf('/') + 1);
-                    var optValue = body.node.nodes[i].value;
-                    options[optName] = optValue;
-                }
-            }
-        }
-        return cb(options);
-    });
-}
 //get dependencies and their values from etcd
 function getDependencies(key, cb){
 
@@ -104,20 +73,20 @@ function getEtcdKeyValue(item, cb){
 
         //check for errors
         if(body && body.errorCode > 0){
-            setConfig(item.name, { "err":{"code":body.errorCode, "message": body.message , "cause": body.cause}});
+            setConfigValue(item.name, { "err":{"code":body.errorCode, "message": body.message , "cause": body.cause}});
             return cb();
         }
 
         //read node value or iterate first depth of nodes and read their values
         if(!body.node.dir){
-            setConfig(item.name, body.node.value);
+            setConfigValue(item.name, body.node.value);
         }else{
             if (body.node.dir){
                 for (var i=body.node.nodes.length; i--; ) {
-                    if (!body.node.nodes[i].dir) setConfig(item.name, body.node.nodes[i].value);
+                    if (!body.node.nodes[i].dir) setConfigValue(item.name, body.node.nodes[i].value);
                 }
             }else{
-                setConfig(item.name, { "err":{"code":body.errorCode, "message": body.message , "cause": body.cause}});
+                setConfigValue(item.name, { "err":{"code":body.errorCode, "message": body.message , "cause": body.cause}});
             }
         }
         return cb();
@@ -125,19 +94,19 @@ function getEtcdKeyValue(item, cb){
 }
 
 //writes key/values to the config object
-function setConfig(name, value, prevValue){
+function setConfigValue(name, value, prevValue){
     //if key does not exist create it
-    if (!config.dependencies) config.dependencies = {};
-    if (!config.dependencies[name]) config.dependencies[name] = [];
+    if (!config) config = {};
+    if (!config[name]) config[name] = [];
 
     //if value exists then update, otherwise insert
-    for (var i=config.dependencies[name].length; i--; ) {
-        if (config.dependencies[name][i] == prevValue) {
-            config.dependencies[name][i] = value;
+    for (var i=config[name].length; i--; ) {
+        if (config[name][i] == prevValue) {
+            config[name][i] = value;
             return true;
         }
     }
-    config.dependencies[name].push(value);
+    config[name].push(value);
     return true;
 }
 
@@ -149,23 +118,23 @@ function watchEtcdKey(item, cb){
 
         //check for errors
         if(body && body.errorCode > 0){
-            setConfig(item.name, { "err":{"code":body.errorCode, "message": body.message , "cause": body.cause}});
+            setConfigValue(item.name, { "err":{"code":body.errorCode, "message": body.message , "cause": body.cause}});
         }
 
         //read node value or iterate first depth of nodes and read their values
         if(!body.node.dir){
-            setConfig(item.name, body.node.value, body.prevNode.value);
+            setConfigValue(item.name, body.node.value, body.prevNode.value);
         }else{
             if (body.node.dir){
                 for (var i=body.node.nodes.length; i--; ) {
-                    if (!body.node.nodes[i].dir) setConfig(item.name, body.node.nodes[i].value, body.node.nodes[i].prevNode.value);
+                    if (!body.node.nodes[i].dir) setConfigValue(item.name, body.node.nodes[i].value, body.node.nodes[i].prevNode.value);
                 }
             }else{
-                setConfig(item.name, { "err":{"code":body.errorCode, "message": body.message , "cause": body.cause}});
+                setConfigValue(item.name, { "err":{"code":body.errorCode, "message": body.message , "cause": body.cause}});
             }
         }
         console.log(JSON.stringify(config, null, 2));
-        //create new watch for subsequent changes
+        //register new watch for subsequent changes
         watchEtcdKey(item);
 
     });
